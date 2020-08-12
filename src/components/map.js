@@ -57,7 +57,7 @@ const Map = () => {
                 setViewport(nextViewport)
             }}
             mapboxApiAccessToken='pk.eyJ1IjoiamVybXVzdGFqYSIsImEiOiJja2RyOHJnOGQxY2V6MnF0dmI5Y2lreGV2In0.FZxl8jcfpFySYN2KmP3U0w'
-            mapStyle="mapbox://styles/jermustaja/ckdrhr7kh0za819o20lox1mti"
+            mapStyle="mapbox://styles/jermustaja/ckdrw4pw50drj1artc957rf54"
         >
             {trains.map(train => (
                 <Marker
