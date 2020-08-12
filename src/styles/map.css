@@ -1,0 +1,40 @@
+
+.map-coordinates {
+
+}
+
+.marker-moving {
+    display: flex;
+    color: #fff;
+    width: 27px;
+    height: 27px;
+    background-color: #58a50b;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    border: solid 3px #fff;
+    box-shadow: 0 0 1px 1px black;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.marker-stopped {
+    display: flex;
+    color: #fff;
+    width: 27px;
+    height: 27px;
+    background-color: #ed5564;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    border: solid 3px #fff;
+    box-shadow: 0 0 1px 1px black;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.marker:hover {
+    cursor: pointer;
+}

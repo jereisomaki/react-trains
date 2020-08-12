@@ -1,0 +1,43 @@
+.header {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
+    width: 100%;
+    min-height: 50px;
+    background-color: #fff;
+    opacity: 0.80;
+    border-bottom: solid 1px #8f8f8f;
+}
+
+.map-logo {
+    padding: 15px;
+}
+
+.search-box {
+    padding: 15px;
+}
+
+.search-input {
+    position: relative;
+    height: 25px;
+    width: 200px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: solid 1px #8f8f8f;
+    border-radius: 3px;
+}
+
+.search-icon {
+    position: absolute;
+    top: 22px;
+    right: 22px;
+}
+
+@media only screen and (max-width: 400px) {
+    .search-input {
+        width: 125px;
+    }
+  }

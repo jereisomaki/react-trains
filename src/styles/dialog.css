@@ -1,0 +1,7 @@
+.dialog {
+    background-color: green;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: auto;
+}
