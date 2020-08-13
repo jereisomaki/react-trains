@@ -6,7 +6,7 @@ import { singleTrainApiUrl } from '../config/api';
 import '../styles/map.css';
 const axios = require('axios').default;
 
-const Map = () => {
+const Map = (props) => {
     const [viewport, setViewport] = useState({
         width: "100vw",
         height: "100vh",
@@ -22,11 +22,19 @@ const Map = () => {
 
     useEffect(() => {
         GetTrains();
+        // Update train locations every 5 seconds
         const interval = setInterval(() => {
             GetTrains();
         }, 5000);
         return () => clearInterval(interval);
     },[])
+
+    useEffect(() => {
+        if(props.searchID != null){
+            SearchTrain();
+            props.setSearchID(null)
+        }
+    }, [props.searchID])
 
     // Get all trains
     const GetTrains = async () => {
@@ -51,17 +59,27 @@ const Map = () => {
         }
     }
 
-    const flyTo = (lat, long) => {
-        // Zoom to active marker
+    // Zoom to active marker
+    const flyTo = (lat, long, zoom) => {
         setViewport({
-            width: "100vw",
-            height: "100vh",
+            width: viewport.width,
+            height: viewport.height,
             latitude: lat,
             longitude: long,
-            zoom: viewport.zoom,
-            minZoom: 4,
-            maxZoom: 16,
+            zoom: zoom,
+            minZoom: viewport.minZoom,
+            maxZoom: viewport.maxZoom,
         })  
+    }
+
+    // Search train
+    const SearchTrain = () => {
+        console.log("search: " + props.searchID)
+
+        {trains.map(train => (
+            // Check if search is equal to train number
+            train.trainNumber == props.searchID ? flyTo(train.location.coordinates[1], train.location.coordinates[0], 10) : null
+        ))}
     }
 
     return (
@@ -82,7 +100,7 @@ const Map = () => {
                     offsetTop={-10}
                 >
                     <div className={train.speed == 0 ? "marker-stopped" : "marker-moving"} onClick={() => {
-                        flyTo(train.location.coordinates[1], train.location.coordinates[0]);   
+                        flyTo(train.location.coordinates[1], train.location.coordinates[0], viewport.zoom);   
                         GetSingleTrain(train.trainNumber);                
                     }}>
                         {train.trainNumber}

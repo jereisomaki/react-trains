@@ -3,10 +3,13 @@ import Map from './components/map';
 import Header from './components/header';
 
 const App = () => {
+
+  const [searchID, setSearchID] = useState(null);
+
   return (
     <div className="App">
-      <Header />
-      <Map />
+      <Header setSearchID={setSearchID} />
+      <Map searchID={searchID} setSearchID={setSearchID}/>
     </div>
   );
 }
